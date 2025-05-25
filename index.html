@@ -21,3 +21,156 @@
   </form>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Սրբուհի և Սուրեն - Հարսանեկան հրավիրատոմս</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Marcellus&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background: #fff6f4;
+      color: #4a3b3b;
+      scroll-behavior: smooth;
+    }
+    header {
+      height: 100vh;
+      background: url('https://i.imgur.com/2dWf4wr.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+      color: #6e3c3c;
+    }
+    header h1 {
+      font-size: 3em;
+      font-family: 'Marcellus', serif;
+      animation: fadeInDown 2s ease forwards;
+    }
+    header h2 {
+      font-size: 1.8em;
+      animation: fadeInUp 2.5s ease forwards;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    section {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .countdown {
+      font-size: 1.5em;
+      color: #a15555;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    form {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #d8bebe;
+      border-radius: 6px;
+      background: #fff8f8;
+    }
+    button {
+      margin-top: 20px;
+      background: #b87a76;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background: #a66a6a;
+    }
+    .gallery {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 20px 0;
+    }
+    .gallery img {
+      height: 300px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Սրբուհի և Սուրեն</h1>
+    <h2>Մենք ամուսնանում ենք | 09.08.25</h2>
+  </header>
+
+  <section>
+    <div class="countdown" id="countdown"></div>
+    <p style="text-align: center; font-size: 1.1em;">
+      Հարգելի հյուրեր,<br>
+      Մեր կյանքում սկսվում է նոր և հիասքանչ փուլ, և մենք ցանկանում ենք այդ օրը կիսել ձեզ հետ։
+    </p>
+
+    <div class="gallery">
+      <img src="11111.png" alt="photo1">
+      <img src="123456.png" alt="photo2">
+      <img src="12345678.png" alt="photo3">
+      <img src="Безымянный-2.png" alt="photo4">
+    </div>
+
+    <form name="rsvp" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="rsvp">
+      <label>Ձեր անունը</label>
+      <input type="text" name="name" required>
+      <label>Քանի հոգով եք գալու</label>
+      <input type="number" name="guests" required>
+      <label>Կկարողանաք ներկայանալ՞</label>
+      <select name="attend">
+        <option value="yes">Այո կգամ</option>
+        <option value="no">Ցավոք չեմ կարող</option>
+      </select>
+      <button type="submit">Ուղարկել</button>
+    </form>
+  </section>
+
+  <script>
+    const countdownEl = document.getElementById("countdown");
+    const targetDate = new Date("2025-08-09T00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      countdownEl.innerHTML = `Մնացել է ${days} օր, ${hours} ժամ, ${mins} րոպե`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
